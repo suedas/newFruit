@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SlotManager : MonoBehaviour
 {
+    
     Vector3 offset, orginalPos;
     public GameObject boxArea;
     // public string destinationTag = "DropArea";
@@ -34,13 +36,19 @@ public class SlotManager : MonoBehaviour
         {
             if (hitInfo.transform.tag == "box")
             {
-                transform.position = new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y+3, hitInfo.transform.position.z);// hitInfo.transform.position;
-                transform.parent =hitInfo.transform;
-                Debug.Log(hitInfo.transform.childCount); 
+                
+                transform.DOMove( new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y+3, hitInfo.transform.position.z),.2f);// hitInfo.transform.position;
+                transform.parent =hitInfo.transform;             
+                Debug.Log(hitInfo.transform.childCount);
+                int boxChild = hitInfo.transform.childCount;
+                if (boxChild==2)
+                {
+                    UiController.instance.OpenWinPanel();
+                }
             }
             else
             {
-                transform.position = orginalPos;
+                transform.DOMove(orginalPos,.2f);
             }
         }
         transform.GetComponent<Collider>().enabled = true;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class DragDrop : MonoBehaviour
 {
@@ -46,20 +47,20 @@ public class DragDrop : MonoBehaviour
             {
                 if (DropArea.transform.childCount==0)
                 {
-                    transform.position = new Vector3(hitInfo.transform.position.x-3, hitInfo.transform.position.y + 4, hitInfo.transform.position.z);// hitInfo.transform.position;
+                    transform.DOMove( new Vector3(hitInfo.transform.position.x-3, hitInfo.transform.position.y + 4, hitInfo.transform.position.z),.2f);// hitInfo.transform.position;
                     transform.parent = DropArea.transform;
                 }
                 else if(DropArea.transform.childCount==1)
                 {
-                    transform.position = new Vector3(hitInfo.transform.position.x+4, hitInfo.transform.position.y + 4, hitInfo.transform.position.z);// hitInfo.transform.position;
+                    transform.DOMove( new Vector3(hitInfo.transform.position.x+4, hitInfo.transform.position.y + 4, hitInfo.transform.position.z),.2f);// hitInfo.transform.position;
                     transform.parent = DropArea.transform;
-                    Match();
+                    StartCoroutine(Match());
                 }
               
             }     
             else
             {
-                transform.position = orginalPos;
+                transform.DOMove(orginalPos,.2f);
                 transform.parent = null;                
             }
         }      
@@ -71,8 +72,10 @@ public class DragDrop : MonoBehaviour
         mouseScreenPos.z = Camera.main.WorldToScreenPoint(transform.position).z;
         return Camera.main.ScreenToWorldPoint(mouseScreenPos);
     }
-    public void Match()
-    {
+    
+     public IEnumerator Match()
+     {
+        yield return new WaitForSeconds(.2f);
         if (DropArea.transform.GetChild(0).tag==DropArea.transform.GetChild(1).tag)
         {
             int dropChild = DropArea.transform.childCount;
