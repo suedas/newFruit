@@ -8,6 +8,9 @@ TagManager:
   - collectible
   - finish
   - DropArea
+  - box
+  - apple
+  - orange
   layers:
   - Default
   - TransparentFX

@@ -63,7 +63,14 @@ public class DragDrop : MonoBehaviour
                 transform.DOMove(orginalPos,.2f);
                 transform.parent = null;                
             }
-        }      
+        }
+        else if(!transform.parent && !transform.parent.CompareTag("DropArea"))
+        {
+            transform.DOMove(orginalPos, .2f);
+            transform.parent = null;
+        } 
+        
+   
         transform.GetComponent<Collider>().enabled = true;      
     }
     Vector3 GetMouse()
