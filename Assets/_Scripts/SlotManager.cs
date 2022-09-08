@@ -34,7 +34,7 @@ public class SlotManager : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(rayOrgin, rayDirection, out hitInfo))
         {
-            if (hitInfo.transform.tag == "box")
+            if (hitInfo.transform.tag == "box" || hitInfo.transform.tag=="meyve")
             {
                 
                 transform.DOMove( new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y+3, hitInfo.transform.position.z),.2f);// hitInfo.transform.position;
@@ -51,7 +51,13 @@ public class SlotManager : MonoBehaviour
                 transform.DOMove(orginalPos,.2f);
             }
         }
-        transform.GetComponent<Collider>().enabled = true;
+        else if (!transform.parent.CompareTag("DropArea")||!transform.CompareTag("meyve"))
+        {
+            transform.DOMove(orginalPos, .2f);
+            transform.parent = null;
+        }
+       
+       // transform.GetComponent<Collider>().enabled = true;
     }
     Vector3 GetMouse()
     {

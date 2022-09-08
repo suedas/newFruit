@@ -9,32 +9,21 @@ public class DragDrop : MonoBehaviour
     Vector3 offset,orginalPos;
     public GameObject DropArea;
     public GameObject ss;
-    // public string destinationTag = "DropArea";
-
-    //private void Awake()
-    //{
-    //    orginalPos = transform.position;
-    //}
-
-
+    //LayerMask layer = (1 << 6);
     void Awake()
     {
         orginalPos = transform.position;
     }
     
-
     private void OnMouseDown()
     {
         offset = transform.position - GetMouse();
         transform.GetComponent<Collider>().enabled = false;
-
-
     }
     private void OnMouseDrag()
     {
-        transform.position = GetMouse() + offset;
-       
-
+        //transform.position = GetMouse() + offset;
+        transform.position =new Vector3(GetMouse().x,7,GetMouse().z) + offset;
     }
     private void OnMouseUp()
     {
@@ -43,20 +32,22 @@ public class DragDrop : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(rayOrgin, rayDirection, out hitInfo))
         {
-            if (hitInfo.transform.tag == "DropArea")
+            Debug.Log(hitInfo.collider.name);
+            if (hitInfo.transform.tag=="DropArea")
             {
+                
                 if (DropArea.transform.childCount==0)
                 {
-                    transform.DOMove( new Vector3(hitInfo.transform.position.x-3, hitInfo.transform.position.y + 4, hitInfo.transform.position.z),.2f);// hitInfo.transform.position;
+                    //transform.GetComponent<Collider>().enabled = false;
+                    transform.DOMove( new Vector3(hitInfo.transform.position.x, orginalPos.y, hitInfo.transform.position.z),.2f);// hitInfo.transform.position;
                     transform.parent = DropArea.transform;
-                }
+                 }
                 else if(DropArea.transform.childCount==1)
                 {
-                    transform.DOMove( new Vector3(hitInfo.transform.position.x+4, hitInfo.transform.position.y + 4, hitInfo.transform.position.z),.2f);// hitInfo.transform.position;
+                    transform.DOMove( new Vector3(hitInfo.transform.position.x+4, orginalPos.y, hitInfo.transform.position.z),.2f);// hitInfo.transform.position;
                     transform.parent = DropArea.transform;
                     StartCoroutine(Match());
-                }
-              
+                }             
             }     
             else
             {
@@ -68,9 +59,7 @@ public class DragDrop : MonoBehaviour
         {
             transform.DOMove(orginalPos, .2f);
             transform.parent = null;
-        } 
-        
-   
+        }           
         transform.GetComponent<Collider>().enabled = true;      
     }
     Vector3 GetMouse()
@@ -78,6 +67,7 @@ public class DragDrop : MonoBehaviour
         var mouseScreenPos = Input.mousePosition;
         mouseScreenPos.z = Camera.main.WorldToScreenPoint(transform.position).z;
         return Camera.main.ScreenToWorldPoint(mouseScreenPos);
+       // return Camera.main.ScreenToWorldPoint(new Vector3(mouseScreenPos.x,7,mouseScreenPos.z));
     }
     
      public IEnumerator Match()
@@ -98,17 +88,4 @@ public class DragDrop : MonoBehaviour
             DropArea.transform.GetChild(1).position = orginalPos;
         }
     }
-    //Vector3 objectPos;
-    //private void OnMouseDown()
-    //{
-    //    objectPos = Camera.main.WorldToScreenPoint(transform.position);
-
-    //}
-    //private void OnMouseDrag()
-    //{
-    //    Vector3 pos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, objectPos.z);
-    //    transform.position = Camera.main.ScreenToWorldPoint(pos);
-
-    //}
-
 }
