@@ -34,14 +34,14 @@ public class SlotManager : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(rayOrgin, rayDirection, out hitInfo))
         {
-            if (hitInfo.transform.tag == "box" || hitInfo.transform.tag=="meyve")
+            if (hitInfo.transform.tag == "box")
             {
                 
-                transform.DOMove( new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y+3, hitInfo.transform.position.z),.2f);// hitInfo.transform.position;
+                transform.DOMove( new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y+3, hitInfo.transform.position.z),.2f).OnComplete(()=>{ transform.gameObject.GetComponent<Collider>().enabled = false; });// hitInfo.transform.position;
                 transform.parent =hitInfo.transform;             
                 Debug.Log(hitInfo.transform.childCount);
                 int boxChild = hitInfo.transform.childCount;
-                if (boxChild==2)
+                if (boxChild==3)
                 {
                     UiController.instance.OpenWinPanel();
                 }
@@ -57,7 +57,7 @@ public class SlotManager : MonoBehaviour
             transform.parent = null;
         }
        
-       // transform.GetComponent<Collider>().enabled = true;
+        transform.GetComponent<Collider>().enabled = true;
     }
     Vector3 GetMouse()
     {

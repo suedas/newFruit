@@ -9,12 +9,14 @@ public class DragDrop : MonoBehaviour
     Vector3 offset,orginalPos;
     public GameObject DropArea;
     public GameObject ss;
-    //LayerMask layer = (1 << 6);
+    LayerMask layer = (1 << 6);
+
     void Awake()
     {
         orginalPos = transform.position;
+
     }
-    
+   
     private void OnMouseDown()
     {
         offset = transform.position - GetMouse();
@@ -27,24 +29,25 @@ public class DragDrop : MonoBehaviour
     }
     private void OnMouseUp()
     {
+
+
         var rayOrgin = Camera.main.transform.position;
         var rayDirection = GetMouse() - Camera.main.transform.position;
         RaycastHit hitInfo;
-        if (Physics.Raycast(rayOrgin, rayDirection, out hitInfo))
+        if (Physics.Raycast(rayOrgin, rayDirection, out hitInfo,layer))
         {
             Debug.Log(hitInfo.collider.name);
-            if (hitInfo.transform.tag=="DropArea")
-            {
-                
+            if (hitInfo.transform.tag=="DropArea") 
+            {               
                 if (DropArea.transform.childCount==0)
                 {
                     //transform.GetComponent<Collider>().enabled = false;
-                    transform.DOMove( new Vector3(hitInfo.transform.position.x, orginalPos.y, hitInfo.transform.position.z),.2f);// hitInfo.transform.position;
+                    transform.DOMove( new Vector3(hitInfo.transform.position.x-3, orginalPos.y, hitInfo.transform.position.z),.2f);// hitInfo.transform.position;
                     transform.parent = DropArea.transform;
                  }
                 else if(DropArea.transform.childCount==1)
                 {
-                    transform.DOMove( new Vector3(hitInfo.transform.position.x+4, orginalPos.y, hitInfo.transform.position.z),.2f);// hitInfo.transform.position;
+                    transform.DOMove( new Vector3(hitInfo.transform.position.x+2, orginalPos.y, hitInfo.transform.position.z),.2f);// hitInfo.transform.position;
                     transform.parent = DropArea.transform;
                     StartCoroutine(Match());
                 }             

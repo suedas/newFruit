@@ -1,14 +1,8 @@
 fileFormatVersion: 2
-guid: 3b1631b578eb2434e8b8864a20073cd3
+guid: 9846782f28d6e6c4081cc54309392f41
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable:
-  - first:
-      74: -5855054831694880198
-    second: Avokado.002|Avokado.002Action
-  - first:
-      74: 2382680280790785659
-    second: Avokado.002|Avokado.002|Avokado.002|Avokado.002Action
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
