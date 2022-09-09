@@ -5,11 +5,11 @@ using DG.Tweening;
 
 public class DragDrop : MonoBehaviour
 {
-    
     Vector3 offset,orginalPos;
     public GameObject DropArea;
     public GameObject ss;
-    LayerMask layer = (1 << 6);
+    int heart = 2;
+    //LayerMask layer = (1 << 6);
 
     void Awake()
     {
@@ -34,7 +34,7 @@ public class DragDrop : MonoBehaviour
         var rayOrgin = Camera.main.transform.position;
         var rayDirection = GetMouse() - Camera.main.transform.position;
         RaycastHit hitInfo;
-        if (Physics.Raycast(rayOrgin, rayDirection, out hitInfo,layer))
+        if (Physics.Raycast(rayOrgin, rayDirection, out hitInfo))
         {
             Debug.Log(hitInfo.collider.name);
             if (hitInfo.transform.tag=="DropArea") 
@@ -42,7 +42,7 @@ public class DragDrop : MonoBehaviour
                 if (DropArea.transform.childCount==0)
                 {
                     //transform.GetComponent<Collider>().enabled = false;
-                    transform.DOMove( new Vector3(hitInfo.transform.position.x-3, orginalPos.y, hitInfo.transform.position.z),.2f);// hitInfo.transform.position;
+                    transform.DOMove(new Vector3(hitInfo.transform.position.x - 3, orginalPos.y, hitInfo.transform.position.z), .2f);// hitInfo.transform.position;
                     transform.parent = DropArea.transform;
                  }
                 else if(DropArea.transform.childCount==1)
@@ -55,13 +55,18 @@ public class DragDrop : MonoBehaviour
             else
             {
                 transform.DOMove(orginalPos,.2f);
-                transform.parent = null;                
+                transform.parent = null;
+                //heart--;
+                //UiController.instance.heartText.text = heart.ToString();
+                //Debug.Log(heart);
             }
         }
         else if(!transform.parent && !transform.parent.CompareTag("DropArea"))
         {
             transform.DOMove(orginalPos, .2f);
             transform.parent = null;
+            //heart--;
+            //Debug.Log(heart);
         }           
         transform.GetComponent<Collider>().enabled = true;      
     }
@@ -89,6 +94,23 @@ public class DragDrop : MonoBehaviour
         else
         {
             DropArea.transform.GetChild(1).position = orginalPos;
+            transform.parent = null;
+            if (heart>0)
+            {
+                heart--;
+                StartCoroutine(UiController.instance.heartAnim());
+                UiController.instance.heartText.text = (heart+1).ToString();
+                Debug.Log(heart+"heart");
+            }
+          
+            else if (heart==0)
+            {
+                StartCoroutine(UiController.instance.heartAnim());
+
+                UiController.instance.heartText.text = "0";
+
+                UiController.instance.OpenLosePanel();
+            }
         }
     }
 }

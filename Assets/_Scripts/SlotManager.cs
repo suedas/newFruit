@@ -37,11 +37,14 @@ public class SlotManager : MonoBehaviour
             if (hitInfo.transform.tag == "box")
             {
                 
-                transform.DOMove( new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y+3, hitInfo.transform.position.z),.2f).OnComplete(()=>{ transform.gameObject.GetComponent<Collider>().enabled = false; });// hitInfo.transform.position;
+                transform.DOMove( new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y+3, hitInfo.transform.position.z),.2f).OnComplete(()=>{
+                    transform.gameObject.GetComponent<Collider>().enabled = false;
+                    GameManager.instance.IncreaseScore();
+                });// hitInfo.transform.position;
                 transform.parent =hitInfo.transform;             
                 Debug.Log(hitInfo.transform.childCount);
                 int boxChild = hitInfo.transform.childCount;
-                if (boxChild==3)
+                if (boxChild==2)
                 {
                     UiController.instance.OpenWinPanel();
                 }

@@ -16,31 +16,33 @@ public class UiController : MonoBehaviour
 	#endregion
 
 	public GameObject winPanel, gamePanel, losePanel,tapToStartPanel;
-	public TextMeshProUGUI scoreText,levelText;
+	public TextMeshProUGUI scoreText,levelText,heartText;
 
 	private void Start()
 	{
 		gamePanel.SetActive(true);
 		//tapToStartPanel.SetActive(true);
+		//PlayerPrefs.DeleteAll();
 		winPanel.SetActive(false);
 		losePanel.SetActive(false);
 		scoreText.text = PlayerPrefs.GetInt("score").ToString();
+		heartText.text = 3.ToString();
 		levelText.text = "LEVEL " + LevelController.instance.totalLevelNo.ToString();
 	}
 
 	public void NextLevelButtonClick()
 	{
 		winPanel.SetActive(false);
-		tapToStartPanel.SetActive(true);
-		PlayerController.instance.PreStartingEvents();
+		//PlayerController.instance.PreStartingEvents();
 		LevelController.instance.NextLevelEvents();
 	}
 
 	public void RestartButtonClick()
 	{
 		losePanel.SetActive(false);
-		tapToStartPanel.SetActive(true);
-		PlayerController.instance.PreStartingEvents();
+		//tapToStartPanel.SetActive(true);
+		//PlayerController.instance.PreStartingEvents();
+		
 		LevelController.instance.RestartLevelEvents();
 	}
 
@@ -59,10 +61,13 @@ public class UiController : MonoBehaviour
 		{
 			while (tempScore < GameManager.instance.score)
 			{
-				tempScore++;
+				tempScore+=5;
 				scoreText.text = tempScore.ToString();
-				yield return new WaitForSeconds(.05f);
+				scoreText.fontSize = 72;
+				yield return new WaitForSeconds(.002f);
 			}
+			scoreText.fontSize = 56;
+
 		}
 		else if(tempScore > GameManager.instance.score)
 		{
@@ -70,10 +75,17 @@ public class UiController : MonoBehaviour
 			{
 				tempScore--;
 				scoreText.text = tempScore.ToString();
-				yield return new WaitForSeconds(.05f);
+				yield return new WaitForSeconds(.02f);
 			}
 		}		
 	}
+	public IEnumerator heartAnim()
+    {
+		heartText.fontSize = 72;
+		
+		yield return new WaitForSeconds(.002f);
+		heartText.fontSize = 56;
+    }
 
 	public void SetLevelText()
 	{
@@ -83,6 +95,7 @@ public class UiController : MonoBehaviour
 	public void OpenWinPanel()
 	{
 		winPanel.SetActive(true);
+		
 	}
 
 

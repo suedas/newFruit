@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3773417458483949356
 Transform:
   m_ObjectHideFlags: 0
@@ -28,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397723503281718482}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.6, y: 17, z: -6.5}
-  m_LocalScale: {x: 5.0329704, y: 5.0329704, z: 3.7489543}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -1.2, y: 2.4, z: 5.55}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1.8621976}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2015472036643377867}
   m_RootOrder: 3
@@ -279,7 +279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4444542608817603547
 Transform:
   m_ObjectHideFlags: 0
@@ -288,9 +288,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4956944126658076403}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.3, y: 17, z: 7.9999995}
-  m_LocalScale: {x: 5.0329704, y: 5.0329704, z: 3.7489543}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 5.3, y: 2.500001, z: 16.49}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1.8621976}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2015472036643377867}
   m_RootOrder: 5
@@ -488,7 +488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8454394601821859098
 Transform:
   m_ObjectHideFlags: 0
@@ -497,9 +497,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6127774106785055541}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.25, y: 17, z: -0.40000105}
-  m_LocalScale: {x: 5.0329704, y: 5.0329704, z: 3.7489543}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -8.25, y: 2.500001, z: 8.089998}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1.8621976}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2015472036643377867}
   m_RootOrder: 6
@@ -600,7 +600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1648164762814631684
 Transform:
   m_ObjectHideFlags: 0
@@ -609,9 +609,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6676329136089546038}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.3, y: 17, z: -1.0999999}
-  m_LocalScale: {x: 5.0329704, y: 5.0329704, z: 3.7489543}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 5.3, y: 2.5, z: 7.39}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1.8621976}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2015472036643377867}
   m_RootOrder: 4
@@ -786,6 +786,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6942608434826002604, guid: 39e3c1e547e03b840aa3bd40eec496a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7709025610252662138, guid: 39e3c1e547e03b840aa3bd40eec496a3, type: 3}
       propertyPath: DropArea
       value: 
@@ -896,6 +900,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: pearPie
       objectReference: {fileID: 0}
+    - target: {fileID: 6508215327591154641, guid: 256c408260735a946a3029971bdd6d05, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508215327591154641, guid: 256c408260735a946a3029971bdd6d05, type: 3}
+      propertyPath: m_TagString
+      value: pear
+      objectReference: {fileID: 0}
     - target: {fileID: 7880768367021752135, guid: 256c408260735a946a3029971bdd6d05, type: 3}
       propertyPath: DropArea
       value: 
@@ -961,6 +973,10 @@ PrefabInstance:
     - target: {fileID: 3331893429187565787, guid: 94f9ec694eaa033498390d0c453ff8b2, type: 3}
       propertyPath: m_Name
       value: watermelonPie
+      objectReference: {fileID: 0}
+    - target: {fileID: 3331893429187565787, guid: 94f9ec694eaa033498390d0c453ff8b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8991832291302266328, guid: 94f9ec694eaa033498390d0c453ff8b2, type: 3}
       propertyPath: DropArea
@@ -1090,6 +1106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: coconatPie (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 870782452656461469, guid: d7d93d886b646214f9e01abfa4e1d67e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1171561708475559056, guid: d7d93d886b646214f9e01abfa4e1d67e, type: 3}
       propertyPath: DropArea
       value: 
@@ -1115,6 +1135,10 @@ PrefabInstance:
     - target: {fileID: 3487747439307532947, guid: 73f271296ed6c734e81869c0607467e7, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487747439307532947, guid: 73f271296ed6c734e81869c0607467e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4264107842841374761, guid: 73f271296ed6c734e81869c0607467e7, type: 3}
       propertyPath: m_RootOrder
@@ -1226,6 +1250,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: pearPie (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6508215327591154641, guid: 256c408260735a946a3029971bdd6d05, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508215327591154641, guid: 256c408260735a946a3029971bdd6d05, type: 3}
+      propertyPath: m_TagString
+      value: pear
+      objectReference: {fileID: 0}
     - target: {fileID: 7880768367021752135, guid: 256c408260735a946a3029971bdd6d05, type: 3}
       propertyPath: DropArea
       value: 
@@ -1292,6 +1324,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: coconatPie
       objectReference: {fileID: 0}
+    - target: {fileID: 870782452656461469, guid: d7d93d886b646214f9e01abfa4e1d67e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1171561708475559056, guid: d7d93d886b646214f9e01abfa4e1d67e, type: 3}
       propertyPath: DropArea
       value: 
@@ -1313,6 +1349,10 @@ PrefabInstance:
     - target: {fileID: 5155700744096112290, guid: 1189945cc621cbf44b75c1316e24fb7f, type: 3}
       propertyPath: m_Name
       value: applePie (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155700744096112290, guid: 1189945cc621cbf44b75c1316e24fb7f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5532507413697037336, guid: 1189945cc621cbf44b75c1316e24fb7f, type: 3}
       propertyPath: m_RootOrder
@@ -1471,6 +1511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: applePie (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5155700744096112290, guid: 1189945cc621cbf44b75c1316e24fb7f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5532507413697037336, guid: 1189945cc621cbf44b75c1316e24fb7f, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1615,6 +1659,10 @@ PrefabInstance:
     - target: {fileID: 3331893429187565787, guid: 94f9ec694eaa033498390d0c453ff8b2, type: 3}
       propertyPath: m_Name
       value: watermelonPie (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3331893429187565787, guid: 94f9ec694eaa033498390d0c453ff8b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8991832291302266328, guid: 94f9ec694eaa033498390d0c453ff8b2, type: 3}
       propertyPath: DropArea
