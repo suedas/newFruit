@@ -8,8 +8,9 @@ public class DragDrop : MonoBehaviour
     Vector3 offset,orginalPos;
     public GameObject DropArea;
     public GameObject ss;
-    int heart = 2;
+    //int heart = 2;
     //LayerMask layer = (1 << 6);
+
 
     void Awake()
     {
@@ -19,12 +20,13 @@ public class DragDrop : MonoBehaviour
    
     private void OnMouseDown()
     {
-        offset = transform.position - GetMouse();
+        offset = transform.position - GetMouse();       
         transform.GetComponent<Collider>().enabled = false;
     }
     private void OnMouseDrag()
     {
         //transform.position = GetMouse() + offset;
+      
         transform.position =new Vector3(GetMouse().x,7,GetMouse().z) + offset;
     }
     private void OnMouseUp()
@@ -55,7 +57,7 @@ public class DragDrop : MonoBehaviour
             else
             {
                 transform.DOMove(orginalPos,.2f);
-                transform.parent = null;
+                transform.parent =UiController.instance.meyveler.transform;
                 //heart--;
                 //UiController.instance.heartText.text = heart.ToString();
                 //Debug.Log(heart);
@@ -64,10 +66,10 @@ public class DragDrop : MonoBehaviour
         else if(!transform.parent && !transform.parent.CompareTag("DropArea"))
         {
             transform.DOMove(orginalPos, .2f);
-            transform.parent = null;
+            transform.parent = UiController.instance.meyveler.transform;
             //heart--;
             //Debug.Log(heart);
-        }           
+        }
         transform.GetComponent<Collider>().enabled = true;      
     }
     Vector3 GetMouse()
@@ -94,21 +96,21 @@ public class DragDrop : MonoBehaviour
         else
         {
             DropArea.transform.GetChild(1).position = orginalPos;
-            transform.parent = null;
-            if (heart>0)
+            transform.parent = UiController.instance.meyveler.transform;
+            if (UiController.instance.heart >0)
             {
-                heart--;
+                UiController.instance.heart--;
                 StartCoroutine(UiController.instance.heartAnim());
-                UiController.instance.heartText.text = (heart+1).ToString();
-                Debug.Log(heart+"heart");
+                UiController.instance.heartText.text = (UiController.instance.heart +1).ToString();
+                Debug.Log(UiController.instance.heart +"heart");
             }
           
-            else if (heart==0)
+            else if (UiController.instance.heart ==0)
             {
                 StartCoroutine(UiController.instance.heartAnim());
 
                 UiController.instance.heartText.text = "0";
-
+                yield return new WaitForSeconds(.5f);
                 UiController.instance.OpenLosePanel();
             }
         }

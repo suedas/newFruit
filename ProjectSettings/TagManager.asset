@@ -11,6 +11,11 @@ TagManager:
   - box
   - apple
   - orange
+  - avakado
+  - meyve
+  - watermelon
+  - coconat
+  - pear
   layers:
   - Default
   - TransparentFX
@@ -18,8 +23,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - DropArea
+  - meyve
   - 
   - 
   - 

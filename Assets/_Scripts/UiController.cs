@@ -17,12 +17,14 @@ public class UiController : MonoBehaviour
 
 	public GameObject winPanel, gamePanel, losePanel,tapToStartPanel;
 	public TextMeshProUGUI scoreText,levelText,heartText;
-
+	public int heart=2;
+	public GameObject meyveler;
 	private void Start()
 	{
 		gamePanel.SetActive(true);
 		//tapToStartPanel.SetActive(true);
 		//PlayerPrefs.DeleteAll();
+		heart = 2;
 		winPanel.SetActive(false);
 		losePanel.SetActive(false);
 		scoreText.text = PlayerPrefs.GetInt("score").ToString();
@@ -43,6 +45,14 @@ public class UiController : MonoBehaviour
 		//tapToStartPanel.SetActive(true);
 		//PlayerController.instance.PreStartingEvents();
 		
+		int meyve = meyveler.transform.childCount;
+        for (int i = 0; i < meyve; i++)
+        {
+			
+			Destroy(meyveler.transform.GetChild(i).gameObject);
+        }
+		heart = 2;
+		heartText.text = (heart+1).ToString();
 		LevelController.instance.RestartLevelEvents();
 	}
 
